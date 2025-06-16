@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_voxel",
+  "%Name":"SpriteToVoxel",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_voxel",
+  "name":"SpriteToVoxel",
   "parent":{
     "name":"Sprite to voxel",
     "path":"Sprite to voxel.yyp",
