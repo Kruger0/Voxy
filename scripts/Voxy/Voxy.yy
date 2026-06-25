@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Voxy",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Voxy",
+  "parent":{
+    "name":"Voxy",
+    "path":"folders/Voxy.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
