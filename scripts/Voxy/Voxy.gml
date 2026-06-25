@@ -1,64 +1,16 @@
-
-///@ignore
-function __VoxelCache() {
-    static data = {
-        models  : {},
-    }
-    return data;
-}
-vertex_format_begin();
-vertex_format_add_position_3d();
-vertex_format_add_color();
-vertex_format_add_color();
-__VoxelCache().vform = vertex_format_end();
-
+/*
 ///@ignore
 function __VoxelGet(name) {
     return __VoxelCache().models[$ name];
 }
 
-///@ignore
-function __VertexAdd(vb, px, py, pz, col, alpha, nx, ny, nz, ao, mat) {
-    if (mat) {
-        var _p = matrix_transform_vertex(mat, px, py, pz);
-        var _n = matrix_transform_vertex(mat, nx, ny, nz, 0);
-        var _px = _p[0];
-        var _py = _p[1];
-        var _pz = _p[2];
-        var _nx = (_n[0]*0.5+0.5) * 255;
-        var _ny = (_n[1]*0.5+0.5) * 255;
-        var _nz = (_n[2]*0.5+0.5) * 255;
-    } else {
-        var _px = px;
-        var _py = py;
-        var _pz = pz;
-        var _nx = (nx*0.5+0.5) * 255;
-        var _ny = (ny*0.5+0.5) * 255;
-        var _nz = (nz*0.5+0.5) * 255; 
-    }
-    var _ao = round((ao / 3) * 255)
-    vertex_position_3d(vb, _px, _py, _pz);
-    vertex_color(vb, col, alpha);
-    vertex_argb(vb, (_ao << 24) | (_nz << 16) | (_ny << 8) | (_nx));
-}
 
 ///@ignore
 function __PosToIndex(wid, hei, x, y, z) {
 	return x + y * wid + z * wid * hei;
 }	
 
-///@ignore
-function __GetPixel(buffer, w, h, d, x, y, z) {
-    if (x < 0 || x >= w ||
-        y < 0 || y >= h ||
-        z < 0 || z >= d) {
-        return 0;
-    }
 
-    var _offset = (x + y * w + z * w * h) * buffer_sizeof(buffer_u32);
-    var _peek = buffer_peek(buffer, _offset, buffer_u32)
-    return (_peek >> 24) & 0xFF
-}
 
 ///@ignore
 function __VertexAO(side1, side2, corner) {
@@ -157,16 +109,7 @@ function __VoxelCreate(sprite, fromBottom, zAlign, ambientOcclusion = true, mode
         
         #endregion
         
-        /*
-        Bottom -Z       Middle Z        Top +Z
-        11  12  13      16  04  17      23  24  25      -Y
-        09  05  10      03      00      21  02  22    -X  +X
-        06  07  08      14  01  15      18  19  20      +Y
-        
-        v0      v1                      v4      v5  
 
-        v2      v3                      v6      v7        
-        */
         
         _x -= _spr_xoff;
 		_y -= _spr_yoff;
@@ -328,36 +271,5 @@ function VoxelCreate(name, sprite, fromBottom = true, zAlign = 1, faceColor = tr
     __VoxelCache().models[$ name] = {
         frames : [__VoxelCreate(sprite, fromBottom, zAlign)],
     }
-}
-
-function VoxelDraw(name, frame, x, y, angleX, angleY) {
-    var _mat1 = matrix_build(x, y, 0, 0, angleY, 0, 1, 1, 1)
-    var _mat2 = matrix_build(0, 0, 0, angleX, 0, 0, 1, 1, 1)
-    VoxelDrawExt(name, frame, matrix_multiply(_mat1, _mat2))
-}
-
-
-function VoxelDrawExt(name, frame, matrix) {
-    static u_inv_mat    = shader_get_uniform(shd_voxel_1, "u_inv_mat");
-    static mat_identity = matrix_build_identity()
-    
-    gpu_push_state();
-    gpu_set_ztestenable(true);
-    gpu_set_zwriteenable(true);
-    gpu_set_cullmode(cull_counterclockwise)
-    
-    shader_set(shd_voxel_1);
-    shader_set_uniform_f_array(u_inv_mat, matrix_inverse(matrix_get(matrix_world)))
-    
-    var _model = __VoxelGet(name)
-    var _frames = _model.frames
-    
-    var _frame = frame mod array_length(_frames)
-    vertex_submit(_model.frames[0], pr_trianglelist, -1);
-    
-    shader_reset();
-    gpu_pop_state();
-    
-    matrix_set(matrix_world, mat_identity)
 }
 
