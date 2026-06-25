@@ -4,7 +4,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/Kruger0/Voxy)](https://github.com/Kruger0/Voxy/commits)
 
 <div align="center">
-<h1>Voxy 1.0.0</h1>
+<h1>Voxy 1.0.1</h1>
   <img src="example.png" alt="Voxy Example" width="512">
 </div>
 
