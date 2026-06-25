@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"VoxyModel",
+  "%Name":"VoxyAPI",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"VoxyModel",
+  "name":"VoxyAPI",
   "parent":{
     "name":"Voxy",
     "path":"folders/Voxy.yy",

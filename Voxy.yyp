@@ -13,6 +13,7 @@
     {"$GMFolder":"","%Name":"Demo","folderPath":"folders/Demo.yy","name":"Demo","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Demo/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Voxy","folderPath":"folders/Voxy.yy","name":"Voxy","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Private","folderPath":"folders/Voxy/Private.yy","name":"Private","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[],
@@ -25,8 +26,8 @@
   "resources":[
     {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
+    {"id":{"name":"VoxyAPI","path":"scripts/VoxyAPI/VoxyAPI.yy",},},
     {"id":{"name":"VoxyInit","path":"scripts/VoxyInit/VoxyInit.yy",},},
-    {"id":{"name":"VoxyModel","path":"scripts/VoxyModel/VoxyModel.yy",},},
     {"id":{"name":"VoxyRaw","path":"scripts/VoxyRaw/VoxyRaw.yy",},},
     {"id":{"name":"VoxyVertex","path":"scripts/VoxyVertex/VoxyVertex.yy",},},
     {"id":{"name":"BlueCar","path":"sprites/BlueCar/BlueCar.yy",},},

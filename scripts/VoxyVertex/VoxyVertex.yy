@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"VoxyVertex",
   "parent":{
-    "name":"Voxy",
-    "path":"folders/Voxy.yy",
+    "name":"Private",
+    "path":"folders/Voxy/Private.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

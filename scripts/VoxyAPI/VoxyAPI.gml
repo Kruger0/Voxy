@@ -4,7 +4,7 @@
 /// @param {Asset.GMSprite} sprite Source sprite asset.
 /// @param {bool} shaded Bake face shading into vertex colors. Default: true.
 /// @param {real} zOff Z offset applied to the mesh origin. Default: 0.
-function VoxyModelCreateStatic(name, sprite, shaded = true, zOff = 0) {
+function VoxyCreateStatic(name, sprite, shaded = true, zOff = 0) {
     static __data = VoxyInit();
     if (struct_exists(__data.models, name)) {
         show_debug_message($"[VOXY] - Model '{name}' already exists.");
@@ -20,7 +20,6 @@ function VoxyModelCreateStatic(name, sprite, shaded = true, zOff = 0) {
     __data.models[$ name] = {
         frames: [_vbuff],
         number: 1,
-        shaded,
     };
     show_debug_message($"[VOXY] - Model '{name}' created.");
 }
@@ -30,7 +29,7 @@ function VoxyModelCreateStatic(name, sprite, shaded = true, zOff = 0) {
 /// @param {Asset.GMSprite} sprite  Source sprite asset.
 /// @param {bool} shaded Bake face shading into vertex colors. Default: true.
 /// @param {real} zOff Z offset applied to the mesh origin. Default: 0.
-function VoxyModelCreateAnimated(name, sprite, shaded = true, zOff = 0) {
+function VoxyCreateAnimated(name, sprite, shaded = true, zOff = 0) {
     static __data = VoxyInit();
     if (struct_exists(__data.models, name)) {
         show_debug_message($"[VOXY] - Model '{name}' already exists.");
@@ -44,7 +43,6 @@ function VoxyModelCreateAnimated(name, sprite, shaded = true, zOff = 0) {
     var _model = { 
         frames: array_create(_sNumber),
         number: _sNumber,
-        shaded,
     };
     for (var i = 0; i < _sNumber; i++) {
         var _buff = VoxyRawCreate(sprite, i, _sWidth, _sHeight, _sXOff, _sYOff, _sNumber);
@@ -57,7 +55,7 @@ function VoxyModelCreateAnimated(name, sprite, shaded = true, zOff = 0) {
 /// @desc Submits a voxel model for rendering.
 /// @param {string} name Registry key of the model to draw.
 /// @param {real} frame Frame index for animated models. Default: 0.
-function VoxyModelDraw(name, frame = 0) {
+function VoxyDraw(name, frame = 0) {
     static __data = VoxyInit();
     if (!struct_exists(__data.models, name)) {
         show_debug_message($"[VOXY] - Model '{name}' not found.");
@@ -70,7 +68,7 @@ function VoxyModelDraw(name, frame = 0) {
 
 /// @desc Frees all vertex buffers associated with a model and removes it from the registry.
 /// @param {string} name Registry key of the model to destroy.
-function VoxyModelDestroy(name) {
+function VoxyDestroy(name) {
     static __data = VoxyInit();
     if (!struct_exists(__data.models, name)) {
         show_debug_message($"[VOXY] - Model '{name}' not found.");
@@ -86,21 +84,33 @@ function VoxyModelDestroy(name) {
 /// @desc Returns whether a model is registered.
 /// @param {string} name Registry key to check.
 /// @returns {bool}
-function VoxyModelExists(name) {
+function VoxyExists(name) {
     static __data = VoxyInit();
     return struct_exists(__data.models, name);
 }
 
 /// @desc Set the face brightness values used during mesh baking. Array order: [+X, +Y, +Z, -X, -Y, -Z].
 /// @param {Array<real>} brightness 6-element array of brightness multipliers (0.0 - 1.0).
-function VoxyModelSetBrightness(brightness) {
+function VoxySetBrightness(brightness) {
     static __data = VoxyInit();
     __data.brightness = brightness;
 }
 
 /// @desc Sets a build-time transform matrix applied to all vertex positions during mesh baking.
 /// @param {Array<real>} matrix A 4x4 matrix array (e.g. from matrix_build).
-function VoxyModelSetMatrix(matrix) {
+function VoxySetMatrix(matrix) {
     static __data = VoxyInit();
     __data.matrix = matrix;
+}
+
+/// @desc Returns the number of frames a registered model has.
+/// @param {string} name Registry key of the model.
+/// @returns {real}
+function VoxyGetNumber(name) {
+    static __data = VoxyInit();
+    if (!struct_exists(__data.models, name)) {
+        show_debug_message($"[VOXY] - Model '{name}' not found.");
+        return;
+    }
+    return __data.models[$ name].number;
 }
