@@ -25,7 +25,6 @@
   "resources":[
     {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
-    {"id":{"name":"Voxy","path":"scripts/Voxy/Voxy.yy",},},
     {"id":{"name":"VoxyInit","path":"scripts/VoxyInit/VoxyInit.yy",},},
     {"id":{"name":"VoxyModel","path":"scripts/VoxyModel/VoxyModel.yy",},},
     {"id":{"name":"VoxyRaw","path":"scripts/VoxyRaw/VoxyRaw.yy",},},
@@ -44,7 +43,6 @@
     {"id":{"name":"spr_pickaxe","path":"sprites/spr_pickaxe/spr_pickaxe.yy",},},
     {"id":{"name":"spr_toast","path":"sprites/spr_toast/spr_toast.yy",},},
     {"id":{"name":"spr_vaso","path":"sprites/spr_vaso/spr_vaso.yy",},},
-    {"id":{"name":"Sprite14","path":"sprites/Sprite14/Sprite14.yy",},},
     {"id":{"name":"WhiteMotorcycle","path":"sprites/WhiteMotorcycle/WhiteMotorcycle.yy",},},
     {"id":{"name":"YellowCar","path":"sprites/YellowCar/YellowCar.yy",},},
   ],

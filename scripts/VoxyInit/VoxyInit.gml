@@ -1,5 +1,5 @@
 
-///@ignore
+/// @ignore
 function VoxyInit() {
     static data = undefined
     if (is_undefined(data)) {

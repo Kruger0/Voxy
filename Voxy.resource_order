@@ -6,7 +6,6 @@
   ],
   "ResourceOrderSettings":[
     {"name":"obj_test","order":1,"path":"objects/obj_test/obj_test.yy",},
-    {"name":"Voxy","order":7,"path":"scripts/Voxy/Voxy.yy",},
     {"name":"VoxyModel","order":4,"path":"scripts/VoxyModel/VoxyModel.yy",},
     {"name":"VoxyRaw","order":3,"path":"scripts/VoxyRaw/VoxyRaw.yy",},
     {"name":"VoxyVertex","order":2,"path":"scripts/VoxyVertex/VoxyVertex.yy",},
@@ -23,7 +22,6 @@
     {"name":"spr_house","order":12,"path":"sprites/spr_house/spr_house.yy",},
     {"name":"spr_pickaxe","order":9,"path":"sprites/spr_pickaxe/spr_pickaxe.yy",},
     {"name":"spr_vaso","order":1,"path":"sprites/spr_vaso/spr_vaso.yy",},
-    {"name":"Sprite14","order":6,"path":"sprites/Sprite14/Sprite14.yy",},
     {"name":"WhiteMotorcycle","order":10,"path":"sprites/WhiteMotorcycle/WhiteMotorcycle.yy",},
     {"name":"YellowCar","order":11,"path":"sprites/YellowCar/YellowCar.yy",},
   ],
