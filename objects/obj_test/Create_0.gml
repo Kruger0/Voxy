@@ -20,4 +20,4 @@ dbg_slider(ref_create(self, "sy"), 0.1, 32)
 dbg_slider(ref_create(self, "sz"), 0.1, 32)
 
 VoxyModelSetMatrix(matrix_build(0, 0, 0, 180, 0, 0, 2, 2, 2))
-VoxyModelCreateStatic("house", Sprite14, true, 0.5);
+VoxyModelCreateStatic("house", spr_toast, true, 0.5);
